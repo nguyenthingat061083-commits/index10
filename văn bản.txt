@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Menu UI</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,Arial,sans-serif;
+}
+
+body{
+
+background:#2b2b2b;
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+.menu{
+
+width:920px;
+height:560px;
+
+background:#11151c;
+
+border-radius:14px;
+
+display:flex;
+
+overflow:hidden;
+
+box-shadow:0 0 35px rgba(0,0,0,.6);
+
+}
+
+.sidebar{
+
+width:180px;
+
+background:#0d1016;
+
+padding-top:30px;
+
+border-right:1px solid rgba(255,255,255,.05);
+
+}
+
+.item{
+
+height:75px;
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+padding-left:28px;
+
+cursor:pointer;
+
+color:#8f949d;
+
+transition:.25s;
+
+font-size:18px;
+
+position:relative;
+
+}
+
+.item:hover{
+
+background:#171d26;
+
+}
+
+.item.active{
+
+color:white;
+
+}
+
+.item.active::before{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+top:18px;
+
+width:4px;
+
+height:40px;
+
+background:#ff5b14;
+
+border-radius:5px;
+
+}
+
+.icon{
+
+font-size:22px;
+
+width:30px;
+
+text-align:center;
+
+}
+
+.content{
+
+flex:1;
+
+padding:30px;
+
+color:white;
+
+overflow:auto;
+
+}
+
+.title{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+margin-bottom:30px;
+
+}
+
+.title h2{
+
+color:#ff5b14;
+
+font-size:28px;
+
+}
+
+.title p{
+
+color:#666;
+
+font-size:15px;
+
+}
+
+.section{
+
+margin-bottom:20px;
+
+}
+
+.label{
+
+margin-bottom:8px;
+
+font-size:15px;
+
+color:#d7d7d7;
+
+}
+
+select{
+
+width:100%;
+
+height:42px;
+
+background:#191f29;
+
+border:none;
+
+outline:none;
+
+border-radius:8px;
+
+padding:10px;
+
+color:white;
+
+font-size:15px;
+
+}
+
+.switchRow{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+margin-bottom:20px;
+
+}
+
+.switch{
+
+position:relative;
+
+display:inline-block;
+
+width:54px;
+
+height:28px;
+
+}
+
+.switch input{
+
+display:none;
+
+}
+
+.slider{
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+right:0;
+
+bottom:0;
+
+background:#3d424b;
+
+border-radius:30px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.slider:before{
+
+content:"";
+
+position:absolute;
+
+width:22px;
+
+height:22px;
+
+left:3px;
+
+top:3px;
+
+background:white;
+
+border-radius:50%;
+
+transition:.3s;
+
+}
+
+.switch input:checked + .slider{
+
+background:#ff5b14;
+
+}
+
+.switch input:checked + .slider:before{
+
+transform:translateX(26px);
+
+}
+
+button{
+
+width:100%;
+
+height:48px;
+
+border:none;
+
+border-radius:8px;
+
+background:#ff5b14;
+
+color:white;
+
+font-size:16px;
+
+margin-top:12px;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+button:hover{
+
+background:#ff702b;
+
+}
+
+.info{
+
+background:#181d25;
+
+padding:15px;
+
+border-radius:10px;
+
+margin-bottom:18px;
+
+color:#bfbfbf;
+
+line-height:1.8;
+
+font-size:14px;
+
+}
+
+.colorbox{
+
+display:inline-block;
+
+width:18px;
+
+height:18px;
+
+border-radius:4px;
+
+margin-left:10px;
+
+}
+
+.red{
+
+background:#ff2a2a;
+
+}
+
+.green{
+
+background:#18ff66;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="menu">
+
+<div class="sidebar">
+
+<div class="item active">
+<div class="icon">🎯</div>
+Aimbot
+</div>
+
+<div class="item">
+<div class="icon">👁</div>
+Visuals
+</div>
+
+<div class="item">
+<div class="icon">👜</div>
+Misc
+</div>
+
+<div class="item">
+<div class="icon">⚙</div>
+Settings
+</div>
+
+</div>
+
+<div class="content">
+
+<div class="title">
+
+<h2>AIMBOT</h2>
+
+<p>Automatically aim at enemies.</p>
+
+</div>
+
+<div class="switchRow">
+
+<div>Master switch</div>
+
+<label class="switch">
+
+<input checked type="checkbox">
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+<div class="section">
+
+<div class="label">Aiming method</div>
+
+<select>
+
+<option>Silent aimbot</option>
+
+<option>Normal</option>
+
+</select>
+
+</div>
+
+<div class="switchRow">
+
+<div>Show FOV circle</div>
+
+<label class="switch">
+
+<input type="checkbox">
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+<div class="section">
+
+<div class="label">Ignore types</div>
+
+<select>
+
+<option>Invisible, Knocked</option>
+
+</select>
+
+</div>
+
+<div class="section">
+
+<div class="label">Hitbox</div>
+
+<select>
+
+<option>Randomized</option>
+
+<option>Head</option>
+
+<option>Chest</option>
+
+</select>
+
+</div>
+
+<div class="section">
+
+<div class="label">Target priority</div>
+
+<select>
+
+<option>Closest to crosshair</option>
+
+<option>Closest distance</option>
+
+<option>Lowest HP</option>
+
+</select>
+
+</div>
+
+<hr style="border-color:#222;margin:25px 0;">
+
+<h2 style="color:#ff5b14;margin-bottom:15px;">VISUALS</h2>
+
+<div class="switchRow">
+
+<div>Enemy ESP</div>
+
+<label class="switch">
+
+<input checked type="checkbox">
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+<div class="switchRow">
+
+<div>Line</div>
+
+<label class="switch">
+
+<input checked type="checkbox">
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+<div class="switchRow">
+
+<div>Box <span class="colorbox red"></span><span class="colorbox green"></span></div>
+
+<label class="switch">
+
+<input checked type="checkbox">
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+<div class="switchRow">
+
+<div>Health</div>
+
+<label class="switch">
+
+<input checked type="checkbox">
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+<div class="switchRow">
+
+<div>Nickname</div>
+
+<label class="switch">
+
+<input checked type="checkbox">
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+<hr style="border-color:#222;margin:25px 0;">
+
+<h2 style="color:#ff5b14;margin-bottom:15px;">SETTINGS</h2>
+
+<div class="info">
+
+Version : 1.53<br>
+
+Heartbeat : 0<br>
+
+Language : English<br>
+
+Subscription : 24 Days Remaining
+
+</div>
+
+<button>Enable Silent Mode</button>
+
+<button>Save Settings</button>
+
+<button>Load Settings</button>
+
+</div>
+
+</div>
+
+</body>
+</html>
